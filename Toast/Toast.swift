@@ -314,7 +314,7 @@ public extension UIView {
         let activityView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: style.activitySize.width, height: style.activitySize.height))
         activityView.backgroundColor = style.activityBackgroundColor
         activityView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
-        activityView.layer.cornerRadius = style.cornerRadius < 0 ? style.activitySize.height / 2.0 : style.cornerRadius
+        activityView.layer.cornerRadius = style.activityCornerRadius
         
         if style.displayShadow {
             activityView.layer.shadowColor = style.shadowColor.cgColor
@@ -677,6 +677,8 @@ public struct ToastStyle {
      The fade in/out animation duration. Default is 0.2.
      */
     public var fadeDuration: TimeInterval = 0.2
+    
+    public var activityCornerRadius: CGFloat = 10.0;
     
     /**
      Activity indicator color. Default is `.white`.
