@@ -314,7 +314,8 @@ public extension UIView {
         let activityView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: style.activitySize.width, height: style.activitySize.height))
         activityView.backgroundColor = style.activityBackgroundColor
         activityView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
-        activityView.layer.cornerRadius = style.activityCornerRadius
+		activityView.layer.cornerRadius = style.cornerRadius < 0 ? style.activitySize.height / 2.0 : style.cornerRadius
+
         
         if style.displayShadow {
             activityView.layer.shadowColor = style.shadowColor.cgColor
@@ -426,6 +427,7 @@ public extension UIView {
         let wrapperView = UIView()
         wrapperView.backgroundColor = style.backgroundColor
         wrapperView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
+		wrapperView.layer.cornerRadius = style.cornerRadius
         
         if style.displayShadow {
             wrapperView.layer.shadowColor = UIColor.black.cgColor
@@ -526,6 +528,7 @@ public extension UIView {
             wrapperView.addSubview(imageView)
         }
         wrapperView.layer.cornerRadius = style.cornerRadius < 0 ? wrapperHeight / 2.0 : style.cornerRadius
+
         
         return wrapperView
     }
